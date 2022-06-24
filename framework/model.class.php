@@ -5,7 +5,7 @@
 class model{
     protected $db;//保存数据库对象
     public function __construct(){
-        $this->initDB();//初始化数据库
+        $this->db=MySQLPDO::getInstance($GLOBALS['config']['db']);//初始化数据库
     }
     private function initDB(){
         //配置数据库连接信息
