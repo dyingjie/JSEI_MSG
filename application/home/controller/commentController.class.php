@@ -20,7 +20,7 @@ class commentController{
         public function infoAction(){
         //接收请求参数
         $id = $_GET['id'];
-        //实例化模型，a
+        //实例化模型，取出数据
         $commend = new commentModel();
         $data = $commend->getById($id);
         //载入视图文件
