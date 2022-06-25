@@ -12,7 +12,7 @@ class commentController{
         $data = $comment->getAll();
         //print_r($data);
         //载入视图文件
-        require 'C:\wamp64\www\JSEI_MSG\application\home\view/comment_list.html';
+        require $_SERVER['DOCUMENT_ROOT'].'/JSEI_MSG/application/home/view/comment_list.html';
     }
     /**
      * 查看指定留言信息
@@ -24,6 +24,6 @@ class commentController{
         $commend = new commentModel();
         $data = $commend->getById($id);
         //载入视图文件
-        require 'C:\wamp64\www\JSEI_MSG\application\home\view/comment_info.html';
+        require $_SERVER['DOCUMENT_ROOT'].'/JSEI_MSG/application/home/view/comment_info.html';
     }
 }
