@@ -5,7 +5,7 @@ class MySQLPDO{
         'db' => 'mysql',//数据库
         'host' => 'localhost',//服务器
         'port' => '3306',//端口
-        'pass' => 'root',//密码
+        'pass' => '',//密码
         'charset' => 'utf8',//字符集
         'dbname' => 'msg',//默认数据库
     );

@@ -26,4 +26,21 @@ class commentController{
         //载入视图文件
         require $_SERVER['DOCUMENT_ROOT'].'/JSEI_MSG/application/home/view/comment_info.html';
     }
+    /**
+     * 添加留言信息
+     */
+    public function addAction(){
+        //判断是否是POST方法提交
+        if(empty($_POST)){
+            return false;
+        }
+        $commentModel =new commentModel();
+        //调用insert方法
+        $pass = $commentModel->insert();
+        if($pass) {
+            echo "发表留言成功";
+        } else {
+            echo "发表留言失败";
+        }
+    }
 }
