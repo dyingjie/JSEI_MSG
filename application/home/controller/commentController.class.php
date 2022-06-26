@@ -8,8 +8,11 @@ class commentController{
      */
     public function listAction(){
         //实例化模型，取出数据
-        $comment = new commentModel();
-        $data = $comment->getAll();
+        $commentModel = new commentModel();
+        //取得所有留言数据
+        $data = $commentModel->getAll();
+        //取得留言总数
+        $num = $commentModel->getNumber();
         //print_r($data);
         //载入视图文件
         require $_SERVER['DOCUMENT_ROOT'].'/JSEI_MSG/application/home/view/comment_list.html';

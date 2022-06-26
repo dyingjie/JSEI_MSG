@@ -2,11 +2,27 @@
 /**
  * comment表的操作类，继承基础模型类
  */
+require 'C:\wamp64\www/JSEI_MSG/framework/model.class.php';
 class commentModel extends model{
     /*查询所有留言*/
     public function  getAll(){
-        $data=$this->db->fetchAll("select * from comment");
+        //获得排序参数
+        $order = '';
+        if(isset($_GET['sort']) && $_GET['sort'] == 'desc'){
+            $order = 'order by id desc';
+        }
+        //拼接SQL
+        $sql = "select poster,comment,date,reply from comment $order";
+        //查询结果
+        $data=$this->db->fetchAll($sql);
         return $data;
+    }
+    /**
+     * 留言总数
+     */
+    public function getNumber(){
+        $data = $this->db->fetchRow("select count(*) from comment");
+        return $data['count(*)'];
     }
     /*查询指定ID号的留言*/
     public function getById($id){
