@@ -2,7 +2,7 @@
 /**
  * 留言板控制器类
  */
-class commentController{
+class commentController extends platformController {
     /**
      * 留言列表
      */
@@ -41,9 +41,11 @@ class commentController{
         //调用insert方法
         $pass = $commentModel->insert();
         if($pass) {
-            echo "发表留言成功";
+            //成功时
+            $this->jump($_SERVER['DOCUMENT_ROOT'].'/JSEI_MSG/framework/index.php','发表留言成功');
         } else {
-            echo "发表留言失败";
+            //失败时
+            $this->jump($_SERVER['DOCUMENT_ROOT'].'/JSEI_MSG/framework/index.php','发表留言失败');
         }
     }
 }

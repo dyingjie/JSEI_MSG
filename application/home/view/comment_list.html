@@ -15,6 +15,29 @@
   </ul>
   <textarea name="comment" required>在此输入留言</textarea>
 </form>
+
 <div class="comment_info">
-  留言数：<?php
+  留言数：<?php echo $num;?>
+  <span class="sort">
+    排序方式:
+    <a href="/JSEI_MSG/framework/index.php">正序</a>
+    <a href="/JSEI_MSG/framework/index.php? sort=desc">倒序</a>
+  </span>
 </div>
+<ul class="comments">
+  <?php foreach ($data as $v):?>
+  <li>
+    <p>用户名：<?php echo $v['poster']?></p>
+    <p><?php echo $v['comment']?></p>
+    <p>发表时间：<?php echo $v['date']?></p>
+    <?php if($v['reply']!==''):?>
+    <ul class="reply">
+      <li>
+        <p>管理员回复：</p>
+        <p><?php echo $v['reply']?></p>
+      </li>
+    </ul>
+    <?php endif;?>
+  </li>
+  <?php endForeach;?>
+</ul>

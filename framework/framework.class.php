@@ -25,6 +25,7 @@ class framework {
             //类名=>所有位置
             'model'=>'../framework/model.class.php',
             'MySQLPDO'=>'../framework/MySQLPDO.class.php',
+            'page'=>'../framework/page.class.php',
         );
         //依次判断基础类、模型类、控制器类
         if(isset($base_classes[$class_name])){
