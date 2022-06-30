@@ -9,10 +9,14 @@ class commentController extends platformController {
     public function listAction(){
         //实例化模型，取出数据
         $commentModel = new commentModel();
-        //取得所有留言数据
-        $data = $commentModel->getAll();
         //取得留言总数
         $num = $commentModel->getNumber();
+        //实例化分页类
+        $page=new page($num,$GLOBALS['config']['home']['pagesize']);
+        //取得所有留言数据
+        $data=$commentModel->getAll($page->getLimit());
+        //取得分页导航链接
+        $pageList=$page->getPageList();
         //print_r($data);
         //载入视图文件
         require $_SERVER['DOCUMENT_ROOT'].'/JSEI_MSG/application/home/view/comment_list.html';

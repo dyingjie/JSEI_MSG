@@ -13,4 +13,15 @@ class model{
         //实例化数据库操作类
         $this->db=  MySQLPDO::getInstance($dbConfig);
     }
+    protected function filter($arr,$func) {
+
+        foreach ($arr as $v) {
+            //指定默认值
+            if(! isset($_POST[$v])){
+                $_POST[$v]='';
+            }
+            //调用处理函数结果
+            $_POST[$v] = $func($_POST[$v]);
+        }
+    }
 }

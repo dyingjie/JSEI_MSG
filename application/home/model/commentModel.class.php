@@ -4,15 +4,17 @@
  */
 require 'C:\wamp64\www/JSEI_MSG/framework/model.class.php';
 class commentModel extends model{
-    /*查询所有留言*/
-    public function  getAll(){
+    /**
+     * 留言列表
+     */
+    public function  getAll($limit){
         //获得排序参数
         $order = '';
         if(isset($_GET['sort']) && $_GET['sort'] == 'desc'){
             $order = 'order by id desc';
         }
         //拼接SQL
-        $sql = "select poster,comment,date,reply from comment $order";
+        $sql = "select poster,comment,date,reply from comment $order limit $limit";
         //查询结果
         $data=$this->db->fetchAll($sql);
         return $data;
@@ -31,6 +33,9 @@ class commentModel extends model{
     }
     /*添加留言*/
     public function insert(){
+        //输入过滤
+        $this->filter(array('poster','mail','comment'),'htmlspecialchars');
+        $this->filter(array('poster','mail','comment'),'nl2br');
         //接收输入数据
         $data['poster'] = $_POST['poster'];
         $data['mail'] = $_POST['mail'];

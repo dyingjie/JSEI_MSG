@@ -4,7 +4,7 @@ return array(
     'db'=>array(
 //数据库环境
         'user'=>'root',
-        'pass'=>'',
+        'pass'=>'root',
         'dbname'=>'hcit_msg',
     ),
 //整体信息

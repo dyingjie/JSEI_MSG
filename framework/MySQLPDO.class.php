@@ -86,4 +86,16 @@ class MySQLPDO{
     public function fetchAll($sql) {
         return $this->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
+    /**
+     * 预处理方式执行SQL
+     * @ param $SQL string 执行的SQL语句
+     * @ param $data array 数据数组
+     * @ param & $flag bool 是否执行成功
+     * @ return object PDOStatement
+     */
+    public function execute($sql,$data,& $flag=true){
+        $stmt = $this->db->prepare($sql);
+        $flag = $stmt->excute($data);
+        return $stmt;
+    }
 }

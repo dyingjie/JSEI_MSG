@@ -10,7 +10,7 @@ class page{
      * @ param $size 每页记录数
      * @ param $url URL地址
      */
-    public function __construct($total,$size,$url){
+    public function __construct($total,$size,$url=''){
         //计算页数，向上取整
         $this->total = ceil($total/$size);
         //每页记录数
@@ -57,7 +57,9 @@ class page{
         if($this->page>4) {
             $html="<a href=\"{$this->url}page=1\">1</a>...";
         }
-        for($i=$this->page-3,$len=$this->page+3;$i<=$len&&i<=$this->total;$i++){
+        //page=1 for(i=-2,len=4;i<=len&&i<=total;i++
+        //i=-2,-1,0,1,2.3.4
+        for($i=$this->page-3,$len=$this->page+3;$i<=$len&&$i<=$this->total;$i++){
             if($i>0) {
                 if($i==$this->page){
                     $html.="<a href=\"{$this->url}page=$i\"class=\"curr\">$i</a>";
